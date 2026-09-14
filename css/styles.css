@@ -20,15 +20,21 @@
     padding: 0;
 }
 
+@page {
+    size: A4 landscape;
+    margin: 0;
+}
+
 html,
 body {
-    min-height: 100vh;
+    height: 100%;
 }
 
 body {
     font-family: 'Work Sans', Arial, sans-serif;
     background: var(--backdrop);
     color: var(--ink);
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -363,7 +369,7 @@ body {
     font-weight: 700;
 }
 
-/* Accent colors */
+/* per-stop accent assignment */
 .stop--salinas {
     --tape-color: var(--c-salinas);
 }
@@ -404,46 +410,35 @@ body {
     background: var(--c-banos);
 }
 
-/* ---------- RESPONSIVE PANTALLA (SOLO CUANDO NO SE ESTÁ IMPRIMIENDO) ---------- */
+/* ---------- RESPONSIVE (mobile) ---------- */
 @media screen and (max-width: 900px) {
-    body {
-        padding: 12px 10px 28px;
-    }
-
-    .print-bar {
-        justify-content: center;
-        margin-bottom: 12px;
-    }
-
     .poster {
         aspect-ratio: auto;
-        height: auto;
-        padding: 16px 14px 22px;
-        gap: 16px;
+        padding: 20px 18px 24px;
+        gap: 18px;
     }
 
     .poster::after {
-        inset: 6px;
+        inset: 8px;
         border-width: 1px;
     }
 
     .poster-header {
-        flex-direction: column;
+        flex-wrap: wrap;
         align-items: center;
-        text-align: center;
         gap: 12px;
-        padding-bottom: 14px;
+        padding-bottom: 12px;
         border-bottom-width: 1px;
     }
 
     .postmark {
-        width: 54px;
-        height: 54px;
+        width: 52px;
+        height: 52px;
         border-width: 2px;
     }
 
     .postmark span:first-child {
-        font-size: 17px;
+        font-size: 16px;
     }
 
     .postmark span:last-child {
@@ -452,31 +447,30 @@ body {
     }
 
     .title-block {
-        width: 100%;
-        text-align: center;
+        flex-basis: calc(100% - 76px);
     }
 
     .title-block h1 {
-        font-size: 1.35rem;
-        line-height: 1.2;
+        font-size: 1.25rem;
+        line-height: 1.15;
     }
 
     .title-block p {
-        font-size: 0.85rem;
-        margin-top: 5px;
+        font-size: 0.78rem;
+        margin-top: 4px;
     }
 
     .header-right {
-        width: 100%;
-        align-items: center;
-        text-align: center;
-        gap: 8px;
-        margin-top: 2px;
+        flex-basis: 100%;
+        align-items: flex-start;
+        text-align: left;
+        gap: 6px;
+        margin-top: 4px;
     }
 
     .route-dots {
-        gap: 10px;
-        padding-top: 4px;
+        gap: 8px;
+        padding-top: 2px;
     }
 
     .route-dots::before {
@@ -486,91 +480,67 @@ body {
     }
 
     .route-dots span {
-        width: 20px;
-        height: 20px;
-        font-size: 10px;
+        width: 16px;
+        height: 16px;
+        font-size: 8px;
         border-width: 1.5px;
     }
 
     .route-caption {
-        font-size: 0.75rem;
+        font-size: 0.65rem;
     }
 
     .student-name {
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
 
     .course-tag {
-        font-size: 0.82rem;
+        font-size: 0.78rem;
     }
 
     .stops {
-        display: flex;
-        flex-direction: column;
-        gap: 22px;
+        gap: 20px;
     }
 
     .stops-row,
     .stops-row.bottom {
-        display: flex;
         flex-direction: column;
-        gap: 22px;
-        flex: none;
+        gap: 20px;
     }
 
     .stops-row.bottom .stop {
-        flex: 1 1 100%;
+        flex: 1 1 auto;
     }
 
     .stop {
-        gap: 12px;
-        flex: none;
-        width: 100%;
+        gap: 10px;
     }
 
     .postcard {
-        padding: 10px;
+        padding: 8px;
         border-width: 1px;
-        box-shadow: 0 4px 12px rgba(38, 32, 56, 0.18);
-        display: flex;
-        flex-direction: column;
-        height: auto;
+        box-shadow: 0 6px 14px rgba(38, 32, 56, 0.22);
+        min-height: 220px;
     }
 
     .postcard::before {
-        top: -7px;
+        top: -8px;
         left: calc(50% - 24px);
         width: 48px;
         height: 16px;
     }
 
-    .photo-window {
-        width: 100%;
-        height: 200px;
-        border-radius: 2px;
-    }
-
-    .photo-window img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
     .stop-num {
         bottom: -10px;
-        right: -6px;
-        width: 32px;
-        height: 32px;
-        font-size: 14px;
+        right: -8px;
+        width: 30px;
+        height: 30px;
+        font-size: 13px;
         border-width: 2px;
     }
 
-    .stop-text {
-        width: 100%;
-    }
-
     .stop-title {
-        font-size: 1.05rem;
+        font-size: 1rem;
         gap: 6px;
         border-top-width: 2px;
         padding-top: 8px;
@@ -578,13 +548,13 @@ body {
     }
 
     .stop-title i {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
     }
 
     .sentence-list {
-        gap: 8px;
-        font-size: 0.92rem;
-        line-height: 1.45;
+        gap: 6px;
+        font-size: 0.88rem;
+        line-height: 1.4;
     }
 
     .sentence-list li {
@@ -592,24 +562,20 @@ body {
     }
 }
 
-/* ---------- IMPRESIÓN (PDF HORIZONTAL) ---------- */
-@page {
-    size: landscape;
-    margin: 0;
-}
-
+/* ---------- PRINT (ORIGINAL INTACTO) ---------- */
 @media print {
 
     html,
     body {
-        width: 100% !important;
-        height: 100% !important;
+        width: 297mm !important;
+        height: 210mm !important;
         min-height: 0 !important;
-        max-height: none !important;
+        max-height: 210mm !important;
         margin: 0 !important;
         padding: 0 !important;
         background: var(--paper) !important;
         display: block !important;
+        overflow: hidden !important;
     }
 
     .print-bar {
@@ -617,98 +583,162 @@ body {
     }
 
     .poster-wrap {
-        width: 100% !important;
-        height: 100% !important;
-        max-width: none !important;
+        width: 297mm !important;
+        height: 210mm !important;
+        max-width: none;
+        overflow: hidden !important;
     }
 
     .poster {
-        width: 100vw !important;
-        height: 100vh !important;
+        width: 297mm !important;
+        height: 210mm !important;
         aspect-ratio: auto !important;
         max-width: none !important;
         border-radius: 0 !important;
         box-shadow: none !important;
         container-type: normal !important;
-        padding: 6mm 8mm 6mm !important;
-        gap: 3mm !important;
-        display: flex !important;
-        flex-direction: column !important;
+        padding: 9.2mm 9.8mm 7.7mm !important;
+        gap: 5.6mm !important;
+        overflow: hidden !important;
     }
 
     .poster::after {
-        inset: 2mm !important;
+        inset: 2.7mm !important;
         border-width: 0.3mm !important;
     }
 
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .stop,
+    .postcard,
     .poster-header {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: flex-start !important;
-        text-align: left !important;
-        gap: 4mm !important;
-        padding-bottom: 2mm !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    /* Header */
+    .poster-header {
+        gap: 4.8mm !important;
+        padding-bottom: 3.9mm !important;
         border-bottom-width: 0.35mm !important;
     }
 
-    .title-block {
-        text-align: left !important;
+    .postmark {
+        width: 19mm !important;
+        height: 19mm !important;
+        border-width: 0.5mm !important;
+    }
+
+    .postmark span:first-child {
+        font-size: 5mm !important;
+    }
+
+    .postmark span:last-child {
+        font-size: 1.7mm !important;
+        margin-top: 0.7mm !important;
+    }
+
+    .title-block h1 {
+        font-size: 7.6mm !important;
+        line-height: 1.1 !important;
+    }
+
+    .title-block p {
+        font-size: 3mm !important;
+        margin-top: 1.3mm !important;
     }
 
     .header-right {
-        align-items: flex-end !important;
-        text-align: right !important;
+        gap: 1.6mm !important;
     }
 
+    .route-dots {
+        gap: 3.1mm !important;
+        padding-top: 0.6mm !important;
+    }
+
+    .route-dots::before {
+        left: 2mm !important;
+        right: 2mm !important;
+        border-top-width: 0.3mm !important;
+    }
+
+    .route-dots span {
+        width: 4.5mm !important;
+        height: 4.5mm !important;
+        font-size: 1.85mm !important;
+        border-width: 0.35mm !important;
+    }
+
+    .route-caption {
+        font-size: 2mm !important;
+    }
+
+    .student-name {
+        font-size: 3.4mm !important;
+    }
+
+    .course-tag {
+        font-size: 2.4mm !important;
+    }
+
+    /* Stops */
     .stops {
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: space-between !important;
-        gap: 3mm !important;
-        flex: 1 1 auto !important;
+        gap: 5mm !important;
     }
 
     .stops-row {
-        display: flex !important;
-        flex-direction: row !important;
-        gap: 4mm !important;
-        flex: 1 1 50% !important;
-    }
-
-    .stops-row.bottom {
-        justify-content: center !important;
+        gap: 5.9mm !important;
     }
 
     .stop {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 1.5mm !important;
-        flex: 1 1 0 !important;
-        width: auto !important;
-    }
-
-    .stops-row.bottom .stop {
-        flex: 0 1 calc((100% - 8mm) / 3) !important;
+        gap: 2.2mm !important;
     }
 
     .postcard {
-        padding: 1.5mm !important;
-        height: auto !important;
-        min-height: 0 !important;
-        flex: 1 1 auto !important;
+        padding: 2.1mm !important;
+        border-width: 0.24mm !important;
+        box-shadow: 0 1.6mm 3.3mm rgba(38, 32, 56, 0.22) !important;
     }
 
-    .photo-window {
-        height: 100% !important;
+    .postcard::before {
+        top: -1.6mm !important;
+        left: calc(50% - 5.3mm) !important;
+        width: 10.7mm !important;
+        height: 3.4mm !important;
+    }
+
+    .stop-num {
+        bottom: -2.2mm !important;
+        right: -1.8mm !important;
+        width: 6.8mm !important;
+        height: 6.8mm !important;
+        font-size: 2.8mm !important;
+        border-width: 0.42mm !important;
     }
 
     .stop-title {
-        font-size: 2.8mm !important;
-        margin-bottom: 1mm !important;
+        font-size: 3.3mm !important;
+        gap: 1.3mm !important;
+        border-top-width: 0.4mm !important;
+        padding-top: 1.5mm !important;
+        margin-bottom: 1.6mm !important;
+    }
+
+    .stop-title i {
+        font-size: 2.7mm !important;
     }
 
     .sentence-list {
-        font-size: 2.2mm !important;
-        line-height: 1.2 !important;
+        gap: 1.25mm !important;
+        font-size: 2.55mm !important;
+        line-height: 1.3 !important;
+    }
+
+    .sentence-list li {
+        padding-left: 2.8mm !important;
     }
 }
