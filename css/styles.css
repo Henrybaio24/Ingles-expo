@@ -412,10 +412,17 @@ body {
 
 /* ---------- RESPONSIVE (mobile) ---------- */
 @media screen and (max-width: 900px) {
+
+    .print-bar {
+        display: none;
+    }
+
     .poster {
         aspect-ratio: auto;
         padding: 20px 18px 24px;
         gap: 18px;
+        overflow: visible;
+        height: auto;
     }
 
     .poster::after {
@@ -506,6 +513,8 @@ body {
     .stops-row.bottom {
         flex-direction: column;
         gap: 20px;
+        min-height: auto;
+        flex: 1 1 auto;
     }
 
     .stops-row.bottom .stop {
@@ -514,6 +523,8 @@ body {
 
     .stop {
         gap: 10px;
+        min-height: auto;
+        flex: 1 1 auto;
     }
 
     .postcard {
