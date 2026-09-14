@@ -1,0 +1,676 @@
+:root {
+    --paper: #f1e9d8;
+    --paper-deep: #e8ddc6;
+    --ink: #262038;
+    --ink-soft: #5b5470;
+    --rule: #c7b78f;
+    --white-mat: #fbf8f2;
+    --backdrop: #13141c;
+
+    --c-salinas: #1b5e7a;
+    --c-panecillo: #a06a1c;
+    --c-quilotoa: #1f6f5b;
+    --c-papallacta: #a2502d;
+    --c-banos: #6a3f5e;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@page {
+    size: A4 landscape;
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: "Work Sans", Arial, sans-serif;
+    background: var(--backdrop);
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 22px 16px 34px;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+.print-bar {
+    width: 100%;
+    max-width: 1300px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 14px;
+}
+
+.btn-print {
+    background-color: #d7c9a3;
+    color: #2a2438;
+    border: 1px solid #efe6cf;
+    padding: 8px 18px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: "Work Sans", sans-serif;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-print:hover {
+    background-color: #efe6cf;
+}
+
+/* ---------- THE POSTER ---------- */
+
+.poster-wrap {
+    width: 100%;
+    max-width: 1300px;
+    display: flex;
+    justify-content: center;
+}
+
+.poster {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 297 / 210;
+    background:
+        radial-gradient(circle at 15% 20%,
+            rgba(38, 32, 56, 0.035) 0,
+            transparent 42%),
+        radial-gradient(circle at 85% 75%,
+            rgba(38, 32, 56, 0.04) 0,
+            transparent 46%),
+        var(--paper);
+    border-radius: 3px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+    container-type: inline-size;
+    overflow: hidden;
+    padding: 3.1cqw 3.3cqw 2.6cqw;
+    display: flex;
+    flex-direction: column;
+    gap: 1.9cqw;
+}
+
+.poster::after {
+    content: "";
+    position: absolute;
+    inset: 0.9cqw;
+    border: 0.09cqw solid var(--rule);
+    pointer-events: none;
+}
+
+/* ---------- HEADER ---------- */
+
+.poster-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.6cqw;
+    padding-bottom: 1.3cqw;
+    border-bottom: 0.11cqw dashed var(--rule);
+}
+
+.postmark {
+    flex: 0 0 auto;
+    width: 6.4cqw;
+    height: 6.4cqw;
+    border-radius: 50%;
+    border: 0.14cqw solid var(--ink);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    color: var(--ink);
+}
+
+.postmark span:first-child {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 1.75cqw;
+}
+
+.postmark span:last-child {
+    font-size: 0.55cqw;
+    letter-spacing: 0.08em;
+    margin-top: 0.25cqw;
+    color: var(--ink-soft);
+}
+
+.title-block {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.title-block h1 {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 2.55cqw;
+    line-height: 1.08;
+    color: var(--ink);
+}
+
+.title-block p {
+    font-size: 1.02cqw;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-top: 0.45cqw;
+}
+
+.header-right {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.55cqw;
+    text-align: right;
+}
+
+.route-dots {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1.05cqw;
+    padding-top: 0.2cqw;
+}
+
+.route-dots::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0.7cqw;
+    right: 0.7cqw;
+    border-top: 0.1cqw dashed var(--rule);
+    transform: translateY(-50%);
+    z-index: 0;
+}
+
+.route-dots span {
+    position: relative;
+    z-index: 1;
+    width: 1.5cqw;
+    height: 1.5cqw;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white-mat);
+    font-size: 0.62cqw;
+    font-weight: 700;
+    border: 0.11cqw solid var(--paper);
+}
+
+.route-caption {
+    font-size: 0.68cqw;
+    color: var(--ink-soft);
+}
+
+.student-name {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 1.15cqw;
+    color: var(--ink);
+}
+
+.course-tag {
+    font-size: 0.8cqw;
+    color: var(--ink-soft);
+}
+
+/* ---------- STOPS ---------- */
+
+.stops {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.7cqw;
+}
+
+.stops-row {
+    display: flex;
+    gap: 2cqw;
+    min-height: 0;
+    flex: 1 1 50%;
+}
+
+.stops-row.bottom {
+    justify-content: center;
+}
+
+.stop {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75cqw;
+    min-height: 0;
+    min-width: 0;
+    flex: 1 1 0;
+}
+
+.stops-row.bottom .stop {
+    flex: 0 1 calc((100% - 4cqw) / 3);
+}
+
+.postcard {
+    position: relative;
+    background: var(--white-mat);
+    border: 0.08cqw solid var(--rule);
+    padding: 0.7cqw;
+    box-shadow: 0 0.55cqw 1.1cqw rgba(38, 32, 56, 0.22);
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+}
+
+.postcard::before {
+    content: "";
+    position: absolute;
+    top: -0.55cqw;
+    left: calc(50% - 1.8cqw);
+    width: 3.6cqw;
+    height: 1.15cqw;
+    background: var(--tape-color, var(--c-salinas));
+    opacity: 0.55;
+    transform: rotate(-3deg);
+}
+
+.photo-window {
+    width: 100%;
+    height: 100%;
+    background: var(--paper-deep);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-window img {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.stop-num {
+    position: absolute;
+    bottom: -0.75cqw;
+    right: -0.6cqw;
+    width: 2.3cqw;
+    height: 2.3cqw;
+    border-radius: 50%;
+    background: var(--tape-color, var(--c-salinas));
+    color: var(--white-mat);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95cqw;
+    font-weight: 700;
+    border: 0.14cqw solid var(--paper);
+    z-index: 2;
+}
+
+.stop-text {
+    flex: 0 0 auto;
+    min-height: 0;
+}
+
+.stop-title {
+    font-family: "Fraunces", serif;
+    font-size: 1.12cqw;
+    font-weight: 600;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 0.45cqw;
+    border-top: 0.13cqw solid var(--tape-color, var(--c-salinas));
+    padding-top: 0.5cqw;
+    margin-bottom: 0.55cqw;
+}
+
+.stop-title i {
+    color: var(--tape-color, var(--c-salinas));
+    font-size: 0.92cqw;
+}
+
+.sentence-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.42cqw;
+    font-size: 0.86cqw;
+    line-height: 1.32;
+    color: #3a3450;
+}
+
+.sentence-list li {
+    position: relative;
+    padding-left: 0.95cqw;
+}
+
+.sentence-list li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: var(--tape-color, var(--c-salinas));
+    font-weight: 700;
+}
+
+.sentence-list li span.highlight {
+    color: var(--tape-color, var(--c-salinas));
+    font-weight: 700;
+}
+
+/* per-stop accent assignment */
+.stop--salinas {
+    --tape-color: var(--c-salinas);
+}
+
+.stop--panecillo {
+    --tape-color: var(--c-panecillo);
+}
+
+.stop--quilotoa {
+    --tape-color: var(--c-quilotoa);
+}
+
+.stop--papallacta {
+    --tape-color: var(--c-papallacta);
+}
+
+.stop--banos {
+    --tape-color: var(--c-banos);
+}
+
+.route-dots .d1 {
+    background: var(--c-salinas);
+}
+
+.route-dots .d2 {
+    background: var(--c-panecillo);
+}
+
+.route-dots .d3 {
+    background: var(--c-quilotoa);
+}
+
+.route-dots .d4 {
+    background: var(--c-papallacta);
+}
+
+.route-dots .d5 {
+    background: var(--c-banos);
+}
+
+/* ---------- RESPONSIVE (mobile) ---------- */
+@media screen and (max-width: 900px) {
+    .poster {
+        aspect-ratio: auto;
+        padding: 5cqw 5cqw;
+    }
+
+    .poster-header {
+        flex-wrap: wrap;
+    }
+
+    .header-right {
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .stops-row,
+    .stops-row.bottom {
+        flex-direction: column;
+    }
+
+    .stops-row.bottom .stop {
+        flex: 1 1 auto;
+    }
+
+    .postcard {
+        min-height: 42cqw;
+    }
+
+    .stop-title,
+    .title-block h1,
+    .title-block p,
+    .sentence-list,
+    .student-name,
+    .course-tag,
+    .route-caption,
+    .postmark span {
+        font-size: revert;
+    }
+
+    .title-block h1 {
+        font-size: 5.2vw;
+    }
+
+    .title-block p {
+        font-size: 3vw;
+    }
+
+    .stop-title {
+        font-size: 4vw;
+    }
+
+    .sentence-list {
+        font-size: 3.6vw;
+        gap: 1.4vw;
+    }
+
+    .postmark {
+        width: 12vw;
+        height: 12vw;
+    }
+
+    .postmark span:first-child {
+        font-size: 3.4vw;
+    }
+
+    .postmark span:last-child {
+        font-size: 1.6vw;
+    }
+
+    .student-name {
+        font-size: 3.6vw;
+    }
+
+    .course-tag {
+        font-size: 2.8vw;
+    }
+
+    .stop-num {
+        width: 6vw;
+        height: 6vw;
+        font-size: 2.6vw;
+    }
+}
+
+/* ---------- PRINT ---------- */
+@media print {
+
+    html,
+    body {
+        width: 297mm;
+        height: 210mm;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: var(--paper) !important;
+        display: block !important;
+    }
+
+    .print-bar {
+        display: none !important;
+    }
+
+    .poster-wrap {
+        width: 297mm;
+        height: 210mm;
+        max-width: none;
+    }
+
+    .poster {
+        width: 297mm !important;
+        height: 210mm !important;
+        aspect-ratio: auto !important;
+        max-width: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        container-type: normal !important;
+        padding: 9.2mm 9.8mm 7.7mm !important;
+        gap: 5.6mm !important;
+    }
+
+    .poster::after {
+        inset: 2.7mm !important;
+        border-width: 0.3mm !important;
+    }
+
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .stop,
+    .postcard,
+    .poster-header {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    /* Header */
+    .poster-header {
+        gap: 4.8mm !important;
+        padding-bottom: 3.9mm !important;
+        border-bottom-width: 0.35mm !important;
+    }
+
+    .postmark {
+        width: 19mm !important;
+        height: 19mm !important;
+        border-width: 0.5mm !important;
+    }
+
+    .postmark span:first-child {
+        font-size: 5mm !important;
+    }
+
+    .postmark span:last-child {
+        font-size: 1.7mm !important;
+        margin-top: 0.7mm !important;
+    }
+
+    .title-block h1 {
+        font-size: 7.6mm !important;
+        line-height: 1.1 !important;
+    }
+
+    .title-block p {
+        font-size: 3mm !important;
+        margin-top: 1.3mm !important;
+    }
+
+    .header-right {
+        gap: 1.6mm !important;
+    }
+
+    .route-dots {
+        gap: 3.1mm !important;
+        padding-top: 0.6mm !important;
+    }
+
+    .route-dots::before {
+        left: 2mm !important;
+        right: 2mm !important;
+        border-top-width: 0.3mm !important;
+    }
+
+    .route-dots span {
+        width: 4.5mm !important;
+        height: 4.5mm !important;
+        font-size: 1.85mm !important;
+        border-width: 0.35mm !important;
+    }
+
+    .route-caption {
+        font-size: 2mm !important;
+    }
+
+    .student-name {
+        font-size: 3.4mm !important;
+    }
+
+    .course-tag {
+        font-size: 2.4mm !important;
+    }
+
+    /* Stops */
+    .stops {
+        gap: 5mm !important;
+    }
+
+    .stops-row {
+        gap: 5.9mm !important;
+    }
+
+    .stop {
+        gap: 2.2mm !important;
+    }
+
+    .postcard {
+        padding: 2.1mm !important;
+        border-width: 0.24mm !important;
+        box-shadow: 0 1.6mm 3.3mm rgba(38, 32, 56, 0.22) !important;
+    }
+
+    .postcard::before {
+        top: -1.6mm !important;
+        left: calc(50% - 5.3mm) !important;
+        width: 10.7mm !important;
+        height: 3.4mm !important;
+    }
+
+    .stop-num {
+        bottom: -2.2mm !important;
+        right: -1.8mm !important;
+        width: 6.8mm !important;
+        height: 6.8mm !important;
+        font-size: 2.8mm !important;
+        border-width: 0.42mm !important;
+    }
+
+    .stop-title {
+        font-size: 3.3mm !important;
+        gap: 1.3mm !important;
+        border-top-width: 0.4mm !important;
+        padding-top: 1.5mm !important;
+        margin-bottom: 1.6mm !important;
+    }
+
+    .stop-title i {
+        font-size: 2.7mm !important;
+    }
+
+    .sentence-list {
+        gap: 1.25mm !important;
+        font-size: 2.55mm !important;
+        line-height: 1.3 !important;
+    }
+
+    .sentence-list li {
+        padding-left: 2.8mm !important;
+    }
+}
