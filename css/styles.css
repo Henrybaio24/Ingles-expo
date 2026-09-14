@@ -620,10 +620,39 @@ body {
     }
 
     /* Header */
+    /* Corrección del encabezado en impresión */
     .poster-header {
-        gap: 4.8mm !important;
-        padding-bottom: 3.9mm !important;
-        border-bottom-width: 0.35mm !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        padding-bottom: 2.5mm !important;
+        border-bottom: 0.35mm dashed var(--rule) !important;
+    }
+
+    .title-block {
+        flex: 1 1 auto !important;
+        padding: 0 4mm !important;
+    }
+
+    .title-block h1 {
+        font-size: 5.5mm !important;
+        /* Reduce ligeramente para que quepa fluido */
+        white-space: nowrap !important;
+        /* Evita que el título principal se corte en 4 líneas */
+        line-height: 1.1 !important;
+    }
+
+    .title-block p {
+        font-size: 2.6mm !important;
+        margin-top: 0.8mm !important;
+        white-space: nowrap !important;
+    }
+
+    .header-right {
+        flex: 0 0 auto !important;
+        text-align: right !important;
     }
 
     .postmark {
