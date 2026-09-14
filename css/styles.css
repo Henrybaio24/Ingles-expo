@@ -64,7 +64,7 @@ body {
     background-color: #efe6cf;
 }
 
-/* ---------- THE POSTER (ESCRITORIO) ---------- */
+/* ---------- THE POSTER ---------- */
 
 .poster-wrap {
     width: 100%;
@@ -404,8 +404,8 @@ body {
     background: var(--c-banos);
 }
 
-/* ---------- RESPONSIVE MÓVIL (PANTALLA ÚNICAMENTE) ---------- */
-@media not print and (max-width: 900px) {
+/* ---------- RESPONSIVE PANTALLA (SOLO CUANDO NO SE ESTÁ IMPRIMIENDO) ---------- */
+@media screen and (max-width: 900px) {
     body {
         padding: 12px 10px 28px;
     }
@@ -592,9 +592,9 @@ body {
     }
 }
 
-/* ---------- IMPRESIÓN FORZADA EN HOJA A4 HORIZONTAL (1 SOLA HOJA) ---------- */
+/* ---------- IMPRESIÓN (PDF HORIZONTAL) ---------- */
 @page {
-    size: 297mm 210mm;
+    size: landscape;
     margin: 0;
 }
 
@@ -602,17 +602,14 @@ body {
 
     html,
     body {
-        width: 297mm !important;
-        height: 210mm !important;
-        min-height: 210mm !important;
-        max-height: 210mm !important;
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 0 !important;
+        max-height: none !important;
         margin: 0 !important;
         padding: 0 !important;
         background: var(--paper) !important;
-        overflow: hidden !important;
         display: block !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
     }
 
     .print-bar {
@@ -620,35 +617,27 @@ body {
     }
 
     .poster-wrap {
-        width: 297mm !important;
-        height: 210mm !important;
-        max-width: 297mm !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        overflow: hidden !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-width: none !important;
     }
 
     .poster {
-        width: 297mm !important;
-        height: 210mm !important;
-        max-width: 297mm !important;
-        max-height: 210mm !important;
+        width: 100vw !important;
+        height: 100vh !important;
         aspect-ratio: auto !important;
+        max-width: none !important;
         border-radius: 0 !important;
         box-shadow: none !important;
         container-type: normal !important;
-        padding: 8mm 10mm 6mm !important;
-        gap: 4mm !important;
-        overflow: hidden !important;
+        padding: 6mm 8mm 6mm !important;
+        gap: 3mm !important;
         display: flex !important;
         flex-direction: column !important;
-        justify-content: space-between !important;
-        page-break-inside: avoid !important;
-        break-inside: avoid !important;
     }
 
     .poster::after {
-        inset: 2.5mm !important;
+        inset: 2mm !important;
         border-width: 0.3mm !important;
     }
 
@@ -657,82 +646,33 @@ body {
         flex-direction: row !important;
         align-items: flex-start !important;
         text-align: left !important;
-        gap: 4.5mm !important;
-        padding-bottom: 3mm !important;
-        border-bottom: 0.35mm dashed var(--rule) !important;
-        flex-shrink: 0 !important;
-    }
-
-    .postmark {
-        width: 17mm !important;
-        height: 17mm !important;
-        border-width: 0.4mm !important;
-    }
-
-    .postmark span:first-child {
-        font-size: 4.5mm !important;
-    }
-
-    .postmark span:last-child {
-        font-size: 1.5mm !important;
+        gap: 4mm !important;
+        padding-bottom: 2mm !important;
+        border-bottom-width: 0.35mm !important;
     }
 
     .title-block {
-        flex: 1 1 auto !important;
         text-align: left !important;
     }
 
-    .title-block h1 {
-        font-size: 6.5mm !important;
-        line-height: 1.1 !important;
-    }
-
-    .title-block p {
-        font-size: 2.6mm !important;
-        margin-top: 1mm !important;
-    }
-
     .header-right {
-        flex: 0 0 auto !important;
         align-items: flex-end !important;
         text-align: right !important;
-        gap: 1.2mm !important;
     }
 
-    .route-dots {
-        gap: 2.5mm !important;
-    }
-
-    .route-dots span {
-        width: 4mm !important;
-        height: 4mm !important;
-        font-size: 1.6mm !important;
-    }
-
-    .student-name {
-        font-size: 3mm !important;
-    }
-
-    .course-tag {
-        font-size: 2.2mm !important;
-    }
-
-    /* Paradas: 2 filas horizontales */
     .stops {
-        flex: 1 1 auto !important;
         display: flex !important;
         flex-direction: column !important;
         justify-content: space-between !important;
-        gap: 3.5mm !important;
-        min-height: 0 !important;
+        gap: 3mm !important;
+        flex: 1 1 auto !important;
     }
 
     .stops-row {
         display: flex !important;
         flex-direction: row !important;
-        gap: 5mm !important;
+        gap: 4mm !important;
         flex: 1 1 50% !important;
-        min-height: 0 !important;
     }
 
     .stops-row.bottom {
@@ -742,67 +682,33 @@ body {
     .stop {
         display: flex !important;
         flex-direction: column !important;
-        gap: 1.8mm !important;
+        gap: 1.5mm !important;
         flex: 1 1 0 !important;
-        min-width: 0 !important;
-        min-height: 0 !important;
-        page-break-inside: avoid !important;
-        break-inside: avoid !important;
+        width: auto !important;
     }
 
     .stops-row.bottom .stop {
-        flex: 0 1 calc((100% - 10mm) / 3) !important;
+        flex: 0 1 calc((100% - 8mm) / 3) !important;
     }
 
     .postcard {
-        padding: 1.8mm !important;
-        border-width: 0.25mm !important;
-        flex: 1 1 auto !important;
+        padding: 1.5mm !important;
+        height: auto !important;
         min-height: 0 !important;
-        height: 48mm !important;
-        /* Altura fija para que la foto no expulse el texto */
-        display: flex !important;
-        box-shadow: 0 1.2mm 2.5mm rgba(38, 32, 56, 0.2) !important;
+        flex: 1 1 auto !important;
     }
 
     .photo-window {
-        width: 100% !important;
         height: 100% !important;
-    }
-
-    .photo-window img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-    }
-
-    .stop-num {
-        bottom: -2mm !important;
-        right: -1.5mm !important;
-        width: 6mm !important;
-        height: 6mm !important;
-        font-size: 2.5mm !important;
-        border-width: 0.35mm !important;
-    }
-
-    .stop-text {
-        flex: 0 0 auto !important;
     }
 
     .stop-title {
         font-size: 2.8mm !important;
-        padding-top: 1.2mm !important;
-        margin-bottom: 1.2mm !important;
-        border-top-width: 0.35mm !important;
+        margin-bottom: 1mm !important;
     }
 
     .sentence-list {
-        gap: 0.8mm !important;
         font-size: 2.2mm !important;
         line-height: 1.2 !important;
-    }
-
-    .sentence-list li {
-        padding-left: 2.2mm !important;
     }
 }
