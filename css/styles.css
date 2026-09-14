@@ -504,12 +504,15 @@ body {
 
     html,
     body {
-        width: 297mm;
-        height: 210mm;
+        width: 297mm !important;
+        height: 210mm !important;
+        min-height: 0 !important;
+        max-height: 210mm !important;
         margin: 0 !important;
         padding: 0 !important;
         background: var(--paper) !important;
         display: block !important;
+        overflow: hidden !important;
     }
 
     .print-bar {
@@ -517,9 +520,10 @@ body {
     }
 
     .poster-wrap {
-        width: 297mm;
-        height: 210mm;
+        width: 297mm !important;
+        height: 210mm !important;
         max-width: none;
+        overflow: hidden !important;
     }
 
     .poster {
@@ -532,6 +536,7 @@ body {
         container-type: normal !important;
         padding: 9.2mm 9.8mm 7.7mm !important;
         gap: 5.6mm !important;
+        overflow: hidden !important;
     }
 
     .poster::after {
